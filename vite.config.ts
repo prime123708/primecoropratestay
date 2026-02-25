@@ -86,7 +86,7 @@ export default defineConfig({
       overlay: false,
     },
     warmup: {
-      clientFiles: ['./src/app/**/*', './src/app/root.tsx', './src/app/routes.ts'],
+      clientFiles: ['./src/app/root.tsx'],
     },
   },
 });
