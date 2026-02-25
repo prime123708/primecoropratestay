@@ -81,7 +81,7 @@ type RouteFiles = {
   };
   "./__create/not-found.tsx": {
     id: "__create/not-found";
-    page: "/" | "/*";
+    page: "/*";
   };
 };
 
