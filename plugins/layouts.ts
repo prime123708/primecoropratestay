@@ -51,7 +51,18 @@ export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): P
         opts.pagePattern.test(id) &&
         !id.includes(NO_LAYOUT_QUERY) // avoid wrapping the already wrapped page
       ) {
-        return buildWrapper.call(this, id);
+        // generate wrapper code and compile with esbuild to produce proper sourcemaps
+        const wrapper = buildWrapper.call(this, id);
+        const loader = id.endsWith('.tsx') ? 'tsx' : 'jsx';
+        const result = await transformWithEsbuild(wrapper, id, {
+          loader,
+          sourcemap: true,
+          sourcefile: id,
+        });
+        return {
+          code: result.code,
+          map: result.map,
+        };
       }
       return null;
     },
