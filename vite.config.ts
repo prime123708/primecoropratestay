@@ -7,6 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { addRenderIds } from './plugins/addRenderIds';
 import { aliases } from './plugins/aliases';
 import consoleToParent from './plugins/console-to-parent';
+import { stripNoLayoutQuery } from './plugins/stripNoLayoutQuery';
 import { layoutWrapperPlugin } from './plugins/layouts';
 import { normalizeSourcemaps } from './plugins/normalizeSourcemaps';
 import { loadFontsFromTailwindSource } from './plugins/loadFontsFromTailwindSource';
@@ -36,6 +37,7 @@ export default defineConfig({
   plugins: [
     nextPublicProcessEnv(),
     restartEnvFileChange(),
+    stripNoLayoutQuery(),
     reactRouterHonoServer({
       serverEntryPoint: './__create/index.ts',
       runtime: 'node',

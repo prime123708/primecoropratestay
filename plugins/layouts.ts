@@ -26,7 +26,10 @@ export interface HierarchicalLayoutOptions {
 const DEFAULT_PAGE_PATTERN = /\/page\.(jsx?)$/;
 const DEFAULT_LAYOUT_FILES = ['layout.jsx'];
 const DEFAULT_PARAM_PATTERN = /\[(\.{3})?([^\]]+)\]/g;
-const NO_LAYOUT_QUERY = '?noLayout.jsx';
+
+// keep track of pages we've already wrapped so that when the original file is
+// imported (as part of the wrapper) we don't wrap it again.
+const wrappedPages = new Set<string>();
 
 export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): Plugin {
   const opts: Required<HierarchicalLayoutOptions> = {
@@ -47,10 +50,19 @@ export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): P
 
     /* ——— turn any   src/foo/bar/page.tsx   into a wrapper ——— */
     async transform(code, id) {
-      if (
-        opts.pagePattern.test(id) &&
-        !id.includes(NO_LAYOUT_QUERY) // avoid wrapping the already wrapped page
-      ) {
+      if (opts.pagePattern.test(id)) {
+        // if we've already wrapped this page once then we're now being asked to
+        // load the *original* file (the import from the wrapper).  In that
+        // case we simply let the normal pipeline continue so the real page
+        // module is compiled as-is.
+        if (wrappedPages.has(id)) {
+          return null;
+        }
+
+        // Otherwise produce a wrapper and remember the path so we never wrap it
+        // again.
+        wrappedPages.add(id);
+
         // generate wrapper code and compile with esbuild to produce proper sourcemaps
         const wrapper = buildWrapper.call(this, id);
         const loader = id.endsWith('.tsx') ? 'tsx' : 'jsx';
@@ -69,6 +81,13 @@ export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): P
         };
       }
       return null;
+    },
+    handleHotUpdate(ctx) {
+      // clear cache entry when the page itself changes so that its wrapper gets
+      // regenerated on the next transform
+      if (opts.pagePattern.test(ctx.file)) {
+        wrappedPages.delete(ctx.file);
+      }
     },
   };
 
@@ -148,8 +167,9 @@ export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): P
       }
     });
 
-    // import the actual page with a flag to skip re-wrapping
-    imports.push(`import Page from ${JSON.stringify(pagePath + NO_LAYOUT_QUERY)};`);
+    // import the actual page directly (we now track wrapped pages via a set
+    // instead of using a query flag)
+    imports.push(`import Page from ${JSON.stringify(pagePath)};`);
 
     if (routeParams.length > 0) {
       imports.push(
