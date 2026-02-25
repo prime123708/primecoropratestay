@@ -58,6 +58,10 @@ export function layoutWrapperPlugin(userOpts: HierarchicalLayoutOptions = {}): P
           loader,
           sourcemap: true,
           sourcefile: id,
+          // ensure JSX is compiled using the automatic runtime so that the
+          // generated code does not reference React directly
+          jsx: 'automatic',
+          jsxImportSource: 'react',
         });
         return {
           code: result.code,

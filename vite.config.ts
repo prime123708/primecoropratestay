@@ -8,6 +8,7 @@ import { addRenderIds } from './plugins/addRenderIds';
 import { aliases } from './plugins/aliases';
 import consoleToParent from './plugins/console-to-parent';
 import { layoutWrapperPlugin } from './plugins/layouts';
+import { normalizeSourcemaps } from './plugins/normalizeSourcemaps';
 import { loadFontsFromTailwindSource } from './plugins/loadFontsFromTailwindSource';
 import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
@@ -65,6 +66,7 @@ export default defineConfig({
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
+    normalizeSourcemaps(),
   ],
   resolve: {
     alias: {
