@@ -17,23 +17,48 @@ import { restartEnvFileChange } from './plugins/restartEnvFileChange';
 
 // Vite warns when a plugin returns code but no sourcemap. the react-router
 // build-client-route transform is one such case; it simply re‑exports symbols
-// and doesn't emit a map. the warning is harmless but noisy. our helper
-// plugin injects an empty map for those virtual modules so Vite stops
-// complaining.
-function fixReactRouterBuildClientRouteSourceMaps(): Plugin {
-  return {
-    name: 'fix-react-router-build-client-route-sourcemap',
-    enforce: 'post',
-    transform(code, id) {
-      if (id.includes('?__react-router-build-client-route')) {
-        return {
-          code,
-          map: { version: 3, sources: [], names: [], mappings: '' }
-        };
-      }
-      return null;
+// and doesn't emit a map. our helper plugin intercepts those virtual modules
+// *before* the router plugin runs and hands back an empty sourcemap, which
+// prevents the warning entirely.
+// This wrapper invokes the standard reactRouter() plugin but then
+// alters its transform hook so that any module created with
+// ?__react-router-build-client-route returns a dummy sourcemap.  Doing the
+// work inside the original plugin eliminates the warning because the map is
+// present when the plugin itself returns its result.
+function reactRouterWithSourcemapFix(): Plugin | Plugin[] {
+  const plugins = reactRouter();
+
+  // sometimes reactRouter() returns an array of plugins; sometimes, maybe a
+  // single object. normalize to array for easier processing.
+  const pluginArray: Plugin[] = Array.isArray(plugins) ? plugins : [plugins];
+
+  for (const p of pluginArray) {
+    if (p && p.name === 'react-router:build-client-route' && typeof p.transform === 'function') {
+      const origTransform = p.transform;
+      p.transform = async function (code, id, options) {
+        const result = await origTransform.call(this, code, id, options);
+
+        if (id.includes('?__react-router-build-client-route')) {
+          if (typeof result === 'string') {
+            return {
+              code: result,
+              map: { version: 3, sources: [], names: [], mappings: '' }
+            };
+          }
+          if (result && typeof result === 'object' && !result.map) {
+            return {
+              ...result,
+              map: { version: 3, sources: [], names: [], mappings: '' }
+            };
+          }
+        }
+        return result;
+      };
     }
-  };
+  }
+
+  // return original shape
+  return Array.isArray(plugins) ? pluginArray : pluginArray[0];
 }
 
 export default defineConfig({
@@ -85,10 +110,9 @@ export default defineConfig({
     consoleToParent(),
     loadFontsFromTailwindSource(),
     addRenderIds(),
-    reactRouter(),
-    // plugin to avoid sourcemap warnings from the built-in react-router
-    // transform that doesn't return a map.
-    fixReactRouterBuildClientRouteSourceMaps(),
+    // reactRouter plugin wrapped to patch its client-route transform so it
+    // always returns a dummy map. this silences the repeated warnings.
+    reactRouterWithSourcemapFix(),
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
