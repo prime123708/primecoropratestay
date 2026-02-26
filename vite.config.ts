@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { reactRouter } from '@react-router/dev/vite';
 import { reactRouterHonoServer } from 'react-router-hono-server/dev';
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import babel from 'vite-plugin-babel';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { addRenderIds } from './plugins/addRenderIds';
@@ -14,6 +14,27 @@ import { loadFontsFromTailwindSource } from './plugins/loadFontsFromTailwindSour
 import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
 import { restartEnvFileChange } from './plugins/restartEnvFileChange';
+
+// Vite warns when a plugin returns code but no sourcemap. the react-router
+// build-client-route transform is one such case; it simply re‑exports symbols
+// and doesn't emit a map. the warning is harmless but noisy. our helper
+// plugin injects an empty map for those virtual modules so Vite stops
+// complaining.
+function fixReactRouterBuildClientRouteSourceMaps(): Plugin {
+  return {
+    name: 'fix-react-router-build-client-route-sourcemap',
+    enforce: 'post',
+    transform(code, id) {
+      if (id.includes('?__react-router-build-client-route')) {
+        return {
+          code,
+          map: { version: 3, sources: [], names: [], mappings: '' }
+        };
+      }
+      return null;
+    }
+  };
+}
 
 export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
@@ -65,6 +86,9 @@ export default defineConfig({
     loadFontsFromTailwindSource(),
     addRenderIds(),
     reactRouter(),
+    // plugin to avoid sourcemap warnings from the built-in react-router
+    // transform that doesn't return a map.
+    fixReactRouterBuildClientRouteSourceMaps(),
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
