@@ -1,0 +1,56 @@
+.hero-section {
+  height: 400px; /* Default height for hero sections */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.hero-section .hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-section .hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-section .hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #eee;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 300px;
+  }
+  .hero-section .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-section .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 250px;
+  }
+  .hero-section .hero-title {
+    font-size: 2rem;
+  }
+}

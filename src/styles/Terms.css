@@ -1,0 +1,43 @@
+.terms-page {
+  padding: 0;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.terms-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.terms-section {
+  margin-bottom: 40px;
+}
+
+.terms-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+  color: #f38d33;
+}
+
+.terms-section p {
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .terms-page {
+    padding: 40px 20px;
+  }
+  .terms-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-page {
+    padding: 30px 15px;
+  }
+}
