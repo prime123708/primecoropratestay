@@ -65,7 +65,7 @@
 
 /* Info Cards Section */
 .info-cards {
-  padding: 0 40px;
+  padding: 30px 40px;
   margin-top: -60px; /* Overlap with hero */
   position: relative;
   z-index: 10;

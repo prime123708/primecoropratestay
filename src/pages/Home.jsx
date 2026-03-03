@@ -2,9 +2,9 @@ import React from 'react';
 import Hero from '../components/Hero';
 import '../styles/Home.css';
 import heroImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.12 PM.jpeg';
-import restaurantImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.09 PM.jpeg';
+// import restaurantImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.09 PM.jpeg';
 import guesthouseImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.11 PM.jpeg';
-import { Star, Award, Users, Clock, Coffee, Wine, Utensils, Wifi, Shield, Car, Bell, Info, CalendarCheck } from 'lucide-react';
+import { Star, Award, Users, Clock, Coffee, Wine, Utensils, Wifi, Shield, Car, Bell, Info, Calendar } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -15,8 +15,8 @@ const Home = () => {
         backgroundImage={heroImg}
       >
         <div className="hero-btns">
-          <button className="btn btn-primary">Book Your Stay</button>
-          <button className="btn btn-secondary">Contact Us</button>
+         <a href='/Rooms'><button className="btn btn-primary">Book Your Stay</button></a> 
+         <a href='/Contact'><button className="btn btn-secondary">Contact Us</button></a>
         </div>
       </Hero>
 
@@ -24,7 +24,7 @@ const Home = () => {
       <section className="info-cards">
         <div className="info-cards-grid">
           <div className="info-card">
-            <div className="info-card-icon highlight"><CalendarCheck size={24} /></div>
+            <div className="info-card-icon"><Calendar size={24} strokeWidth={2.5} /></div>
             <h3>Make Reservation</h3>
             <p>Experience an unforgettable journey at Prime Corporate Stay.</p>
           </div>
