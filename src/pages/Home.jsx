@@ -15,8 +15,8 @@ const Home = () => {
         backgroundImage={heroImg}
       >
         <div className="hero-btns">
-         <a href='/Rooms'><button className="btn btn-primary">Book Your Stay</button></a> 
-         <a href='/Contact'><button className="btn btn-secondary">Contact Us</button></a>
+         <Link to='/rooms'><button className="btn btn-primary">Book Your Stay</button></Link> 
+         <Link to='/contact'><button className="btn btn-secondary">Contact Us</button></Link>
         </div>
       </Hero>
 
