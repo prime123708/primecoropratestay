@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Prime Corporate Stay. All rights reserved. | <Link to="/terms">Terms & Conditions</Link></p>
+        <p>&copy; {new Date().getFullYear()} Prime Corporate Stay. All rights reserved. | Designed & Developed by <Link to="https://www.adavenue.in">Adavenue Brand Labs</Link></p>
       </div>
     </footer>
   );
