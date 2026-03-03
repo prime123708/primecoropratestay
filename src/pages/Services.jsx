@@ -6,12 +6,12 @@ import servicesHeroImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.
 
 const Services = () => {
   const services = [
+    { name: 'Daily Housekeeping', icon: <Bell size={40} />, description: 'Daily Housekeeping ensures a clean, comfortable, and welcoming environment every single day. Our trained staff takes care of regular cleaning, tidying, and essential upkeep to maintain high standards of hygiene and freshness.' },
+    { name: '24/7 Security', icon: <Shield size={40} />, description: 'Security ensures a safe and protected environment around the clock. Our trained security personnel monitor the premises, manage access, and respond promptly to any concerns to maintain peace of mind.' },
     { name: 'Free High-Speed WiFi', icon: <Wifi size={40} />, description: 'Stay connected with our complimentary high-speed internet access throughout the hotel.' },
-    { name: '24/7 Security', icon: <Shield size={40} />, description: 'Your safety is our priority with around-the-clock security and monitoring.' },
     { name: 'Complimentary Parking', icon: <Car size={40} />, description: 'Convenient and secure parking facilities for all our guests.' },
-    { name: 'Room Service', icon: <Bell size={40} />, description: 'Enjoy delicious meals and refreshments in the comfort of your room.' },
-    { name: 'All Day Dining', icon: <Utensils size={40} />, description: 'Savor a variety of international and local cuisines at our restaurant.' },
-    { name: 'Concierge Service', icon: <Users size={40} />, description: 'Our dedicated staff is here to assist with all your travel and activity needs.' },
+    { name: '24/7 Support', icon: <Clock size={40} />, description: 'Our dedicated team is available around the clock to assist you with any needs or concerns during your stay.' },
+    { name: 'Personalized Hospitality', icon: <Users size={40} />, description: 'Experience warm, homely hospitality designed for travelers who appreciate elegant spaces and peaceful stays.' },
   ];
 
   return (

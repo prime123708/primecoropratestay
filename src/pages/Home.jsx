@@ -4,67 +4,85 @@ import '../styles/Home.css';
 import heroImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.12 PM.jpeg';
 import restaurantImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.09 PM.jpeg';
 import guesthouseImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.11 PM.jpeg';
-import { Star, Award, Users, Clock, Coffee, Wine, Utensils, Wifi, Shield, Car, Bell, Info } from 'lucide-react';
+import { Star, Award, Users, Clock, Coffee, Wine, Utensils, Wifi, Shield, Car, Bell, Info, CalendarCheck } from 'lucide-react';
 
 const Home = () => {
   return (
     <div className="home-container">
       <Hero
-        title="Experience luxury hospitality with our exceptional restaurant and elegant guesthouse accommodations"
+        title="Welcome to Prime Corporate Stay"
+        subtitle="Where comfort meets convenience in a warm, homely environment. Designed for travelers who appreciate personalized hospitality and elegant spaces."
         backgroundImage={heroImg}
       >
         <div className="hero-btns">
           <button className="btn btn-primary">Book Your Stay</button>
-          <button className="btn btn-secondary">View Ziyafat Restaurant</button>
+          <button className="btn btn-secondary">Contact Us</button>
         </div>
       </Hero>
+
+      {/* Info Cards Section */}
+      <section className="info-cards">
+        <div className="info-cards-grid">
+          <div className="info-card">
+            <div className="info-card-icon highlight"><CalendarCheck size={24} /></div>
+            <h3>Make Reservation</h3>
+            <p>Experience an unforgettable journey at Prime Corporate Stay.</p>
+          </div>
+          <div className="info-card">
+            <div className="info-card-icon"><Shield size={24} /></div>
+            <h3>Hassle Free Booking</h3>
+            <p>Book your stay without any complications or stress.</p>
+          </div>
+          <div className="info-card">
+            <div className="info-card-icon"><Star size={24} /></div>
+            <h3>Top Reviews</h3>
+            <p>Creating memorable experiences for all our valued guests.</p>
+          </div>
+          <div className="info-card">
+            <div className="info-card-icon"><Clock size={24} /></div>
+            <h3>24/7 Support</h3>
+            <p>Our team is available around the clock for your needs.</p>
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
       <section className="services">
         <div className="section-header">
           <span className="badge"><Star size={14} /> Premium Services</span>
-          <h2>Our Services</h2>
-          <p>Discover our world-class restaurant and comfortable guesthouse facilities</p>
+          <h2>Our Best Ministrations</h2>
+          <p>Discover our world-class services designed for your comfort</p>
         </div>
         <div className="services-grid">
           <div className="service-card">
             <div className="card-image">
-              <img src={restaurantImg} alt="Restaurant" />
-              <span className="card-tag"><Utensils size={14} /> Restaurant</span>
+              <img src={guesthouseImg} alt="Daily Housekeeping" />
+              <span className="card-tag"><Bell size={14} /> Housekeeping</span>
             </div>
             <div className="card-content">
-              <h3>Fine Dining Experience</h3>
-              <p>Savor exquisite cuisine prepared by our expert chefs using the finest ingredients. Our restaurant offers a sophisticated dining atmosphere perfect for any occasion.</p>
+              <h3>Daily Housekeeping</h3>
+              <p>Daily Housekeeping ensures a clean, comfortable, and welcoming environment every single day. Our trained staff takes care of regular cleaning, tidying, and essential upkeep.</p>
               <div className="card-features">
-                <span><Coffee size={14} /> All Day Dining</span>
-                <span><Users size={14} /> Private Events</span>
-                <span><Wine size={14} /> Juice Bar</span>
-                <span><Award size={14} /> Award Winning</span>
-              </div>
-              <div className="card-footer-tags">
-                <span className="tag">International Cuisine</span>
-                <span className="tag">Private Dining</span>
+                <span><Clock size={14} /> Daily Cleaning</span>
+                <span><Users size={14} /> Trained Staff</span>
+                <span><Shield size={14} /> High Standards</span>
+                <span><Award size={14} /> Quality Care</span>
               </div>
             </div>
           </div>
           <div className="service-card">
             <div className="card-image">
-              <img src={guesthouseImg} alt="Guesthouse" />
-              <span className="card-tag"><Bell size={14} /> Guesthouse</span>
+              <img src={heroImg} alt="Security" />
+              <span className="card-tag"><Shield size={14} /> Security</span>
             </div>
             <div className="card-content">
-              <h3>Luxury Accommodations</h3>
-              <p>Relax in our elegantly appointed rooms featuring modern amenities and comfort. Each room is designed to provide a peaceful retreat with exceptional service.</p>
+              <h3>24/7 Security</h3>
+              <p>Security ensures a safe and protected environment around the clock. Our trained security personnel monitor the premises and manage access to maintain peace of mind.</p>
               <div className="card-features">
-                <span><Wifi size={14} /> Free WiFi</span>
-                <span><Clock size={14} /> 24/7 Service</span>
-                <span><Car size={14} /> Free Parking</span>
-                <span><Shield size={14} /> Secure Stay</span>
-              </div>
-              <div className="card-footer-tags">
-                <span className="tag">Free WiFi</span>
-                <span className="tag">24/7 Service</span>
-                <span className="tag">Room Service</span>
+                <span><Shield size={14} /> 24/7 Monitoring</span>
+                <span><Users size={14} /> Trained Guards</span>
+                <span><Clock size={14} /> Fast Response</span>
+                <span><Award size={14} /> Peace of Mind</span>
               </div>
             </div>
           </div>
@@ -74,8 +92,8 @@ const Home = () => {
       {/* About Section */}
       <section className="about">
         <div className="about-header">
-          <h2>About Hotel Orange International</h2>
-          <p>Established with a commitment to excellence, Hotel Orange International combines world-class hospitality with authentic dining experiences. Our dedication to service and attention to detail ensures every guest enjoys an unforgettable stay.</p>
+          <h2>About Prime Corporate Stay</h2>
+          <p>Welcome to Prime Corporate Stay, where comfort meets convenience in a warm, homely environment. Located in a serene neighborhood with easy access to major city hubs, Prime Corporate Stay is designed for travelers who appreciate personalized hospitality, elegant spaces, and peaceful stays.</p>
         </div>
         <div className="about-features">
           <div className="feature-item">
@@ -104,7 +122,7 @@ const Home = () => {
       {/* Why Choose Us Section */}
       <section className="why-choose">
         <div className="why-box">
-          <h2>Why Choose Hotel Orange International?</h2>
+          <h2>Why Choose Prime Corporate Stay?</h2>
           <div className="why-grid">
             <div className="why-item">
               <h4>Our Restaurant</h4>

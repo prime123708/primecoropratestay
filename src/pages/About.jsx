@@ -9,18 +9,18 @@ import aboutHeroImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.12 
 const About = () => {
   const testimonials = [
     {
-      quote: "Hotel Orange International exceeded all my expectations! The service was impeccable, and the food at Ziyafat Restaurant was divine. A truly unforgettable experience.",
-      author: "Jane Doe",
+      quote: "Prime Corporate Stay exceeded all my expectations! The service was impeccable, and the environment was so welcoming. A truly unforgettable experience.",
+      author: "Kavita",
       title: "Frequent Traveler"
     },
     {
       quote: "The rooms are luxurious and comfortable, and the staff goes above and beyond to ensure your stay is perfect. Highly recommend for anyone visiting the city.",
-      author: "John Smith",
+      author: "Manish",
       title: "Business Executive"
     },
     {
       quote: "From the warm welcome to the dedicated service, every detail was perfect. It felt like a home away from home, but with all the luxuries.",
-      author: "Emily White",
+      author: "Manoj",
       title: "Vacationer"
     }
   ];
@@ -28,8 +28,8 @@ const About = () => {
   return (
     <div className="page-container about-page">
       <Hero
-        title="About Hotel Orange International"
-        subtitle="Established with a commitment to excellence, Hotel Orange International combines world-class hospitality with authentic dining experiences. Our dedication to service and attention to detail ensures every guest enjoys an unforgettable stay."
+        title="About Prime Corporate Stay"
+        subtitle="Welcome to Prime Corporate Stay, where comfort meets convenience in a warm, homely environment. Designed for travelers who appreciate personalized hospitality, elegant spaces, and peaceful stays."
         backgroundImage={aboutHeroImg}
       />
 
@@ -67,12 +67,12 @@ const About = () => {
             <div className="story-block">
               <div className="story-icon"><History size={40} /></div>
               <h3>Since 2016</h3>
-              <p>Hotel Orange International has been a beacon of hospitality for over 9 years. When visiting Surat, you'll feel right at home at The Hotel Orange International, which offers quality accommodation and great service. Only 50 m away, this hotel can be easily accessed from the Surat Railway station and Bus Station. The Hotel Orange International is an excellent place to stay and you will be left with some beautiful memories. The service here is great and the staff is friendly and efficient. Also in Ziyafat Restaurant, you can find the best food for eat. The food is excellent. Well, furnished 52 Rooms With Attach Bath. TV with cable Channel. Round the Clock. Direct dialing STD & ISD call. Round the Clock Room Services. 24 hours Running Hot and Cold Water. Same day Laundry Services. Car on rent, Doctor on call. Special Security Devices & Fire Safety.</p>
+              <p>Welcome to Prime Corporate Stay, where comfort meets convenience in a warm, homely environment. Located in a serene neighborhood with easy access to major city hubs, Prime Corporate Stay is designed for travelers who appreciate personalized hospitality, elegant spaces, and peaceful stays. Whether you are here for business, leisure, or a quick transit, we offer a refined stay experience with well-appointed rooms, modern amenities, and a dedicated team committed to making you feel right at home. Experience hospitality that goes beyond just a stay—experience Prime Corporate Stay.</p>
             </div>
             <div className="story-block">
               <div className="story-icon"><Target size={40} /></div>
               <h3>Our Mission</h3>
-              <p>To provide exceptional hospitality experiences that create lasting memories for our guests while maintaining the highest standards of service, comfort, and culinary excellence.</p>
+              <p>To provide exceptional hospitality experiences that create lasting memories for our guests while maintaining the highest standards of service, comfort, and a homely environment.</p>
               <div className="story-stats">
                 <div className="stat-item">
                   <h4>100+</h4>

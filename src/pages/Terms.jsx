@@ -14,19 +14,32 @@ const Terms = () => {
       <div className="terms-content">
         <section className="terms-section">
           <h2>1. Introduction</h2>
-          <p>Welcome to Hotel Orange International. By booking a stay with us, you agree to comply with and be bound by the following terms and conditions.</p>
+          <p>Welcome to Prime Corporate Stay. These terms and conditions outline the rules and regulations for the use of our services and facilities. By making a reservation and staying with us, you accept these terms in full.</p>
         </section>
         <section className="terms-section">
-          <h2>2. Reservation and Cancellation</h2>
-          <p>Reservations are subject to availability. Cancellations must be made at least 24 hours prior to the check-in time to avoid any charges.</p>
+          <h2>2. Booking and Payment</h2>
+          <ul>
+            <li>A valid ID proof (Aadhar Card, Voter ID, Passport, or Driving License) is mandatory for all guests during check-in.</li>
+            <li>Full payment is required at the time of check-in or as per the agreed booking terms.</li>
+            <li>We accept various payment methods, including credit/debit cards, UPI, and bank transfers.</li>
+          </ul>
         </section>
         <section className="terms-section">
           <h2>3. Check-in and Check-out</h2>
-          <p>Check-in time is from 2:00 PM onwards, and check-out time is before 12:00 PM noon.</p>
+          <p>Standard check-in time is 2:00 PM, and check-out time is 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.</p>
         </section>
         <section className="terms-section">
-          <h2>4. Guest Responsibility</h2>
-          <p>Guests are responsible for any damage caused to the hotel property during their stay.</p>
+          <h2>4. Cancellation Policy</h2>
+          <p>Cancellations made 48 hours or more before the check-in date are eligible for a full refund. Cancellations made within 48 hours of check-in will incur a charge of one night's stay. No-shows will be charged the full amount of the reservation.</p>
+        </section>
+        <section className="terms-section">
+          <h2>5. Guest Conduct</h2>
+          <ul>
+            <li>Guests are expected to maintain a peaceful and respectful environment for others.</li>
+            <li>Smoking is strictly prohibited inside the rooms. Designated smoking areas are available.</li>
+            <li>Any damage to property or facilities caused by guests will be charged to the guest's account.</li>
+            <li>Pets are not allowed on the premises.</li>
+          </ul>
         </section>
       </div>
     </div>

@@ -35,8 +35,8 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <Link to="/">
-          <img src={logo} alt="Hotel Orange International Logo" className="logo" />
-          <span className="hotel-name">Hotel Orange International</span>
+          <img src={logo} alt="Prime Corporate Stay Logo" className="logo" />
+          <span className="hotel-name">Prime Corporate Stay</span>
         </Link>
       </div>
 

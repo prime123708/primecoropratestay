@@ -17,19 +17,18 @@ const Contact = () => {
           <div className="info-card">
             <MapPin size={32} />
             <h3>Our Address</h3>
-            <p>123 Hotel St, Luxury City, Country</p>
+            <p>CM 85, Sector 144, Noida,</p>
+            <p>Uttar Pradesh, 201310</p>
           </div>
           <div className="info-card">
             <Phone size={32} />
             <h3>Call Us</h3>
-            <p>+1 234 567 890</p>
-            <p>+1 234 567 891</p>
+            <p>+91 9528544057</p>
           </div>
           <div className="info-card">
             <Mail size={32} />
             <h3>Email Us</h3>
-            <p>info@hotelorangeinternational.com</p>
-            <p>reservations@hotelorangeinternational.com</p>
+            <p>primecorporatestay@gmail.com</p>
           </div>
         </div>
         <div className="contact-form-container">

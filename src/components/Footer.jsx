@@ -8,9 +8,9 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h3 className="footer-title">Hotel Orange International</h3>
+          <h3 className="footer-title">Prime Corporate Stay</h3>
           <p className="footer-description">
-            Experience luxury hospitality with our exceptional restaurant and elegant guesthouse accommodations.
+            Experience luxury hospitality with our exceptional and elegant guesthouse accommodations.
           </p>
           <div className="social-icons">
             <a href="#" className="social-icon"><Facebook size={20} /></a>
@@ -25,16 +25,16 @@ const Footer = () => {
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/rooms">Rooms</Link></li>
             <li><Link to="/services">Services</Link></li>
-            <li><Link to="/restaurant">Restaurant</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
         </div>
         <div className="footer-section">
           <h3 className="footer-title">Contact Info</h3>
           <ul className="contact-info">
-            <li><MapPin size={18} /> <span>123 Hotel St, Luxury City, Country</span></li>
-            <li><Phone size={18} /> <span>+1 234 567 890</span></li>
-            <li><Mail size={18} /> <span>info@hotelorangeinternational.com</span></li>
+            <li><MapPin size={18} /> <span>CM 85, Sector 144, Noida, Uttar Pradesh, 201310</span></li>
+            <li><Phone size={18} /> <span>+91 9528544057</span></li>
+            <li><Mail size={18} /> <span>primecorporatestay@gmail.com</span></li>
           </ul>
         </div>
         <div className="footer-section">
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Hotel Orange International. All rights reserved. | <Link to="/terms">Terms & Conditions</Link></p>
+        <p>&copy; {new Date().getFullYear()} Prime Corporate Stay. All rights reserved. | <Link to="/terms">Terms & Conditions</Link></p>
       </div>
     </footer>
   );
