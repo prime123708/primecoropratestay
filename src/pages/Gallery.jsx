@@ -23,12 +23,14 @@ const Gallery = () => {
         subtitle="Glimpse into our world of luxury and comfort"
         backgroundImage={galleryHeroImg}
       />
-      <div className="gallery-grid">
-        {images.map((img, index) => (
-          <div key={index} className="gallery-item">
-            <img src={img} alt={`Gallery item ${index + 1}`} />
-          </div>
-        ))}
+      <div className="gallery-container">
+        <div className="gallery-grid">
+          {images.map((img, index) => (
+            <div key={index} className="gallery-item">
+              <img src={img} alt={`Gallery item ${index + 1}`} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
