@@ -1,0 +1,56 @@
+.floating-actions {
+  position: fixed;
+  bottom: 20px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: auto;
+}
+
+.floating-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chat-btn {
+  background-color: #25D366; /* WhatsApp Green */
+}
+
+.call-btn {
+  background-color: #c49b71; /* Brownish/Gold color from the branding */
+}
+
+.floating-btn svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .floating-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  
+  .floating-actions {
+    bottom: 15px;
+    left: 10px;
+    right: 10px;
+  }
+}
