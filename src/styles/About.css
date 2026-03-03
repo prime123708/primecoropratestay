@@ -153,49 +153,106 @@
   font-size: 1.1rem;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+.testimonial-slider-container {
+  max-width: 1000px;
   margin: 0 auto;
+  overflow: hidden;
+  position: relative;
   padding: 0 40px;
+}
+
+.testimonial-slider {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 100%;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 10px;
 }
 
 .testimonial-card {
   background: #fff;
-  padding: 30px;
+  padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .testimonial-card .quote {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-style: italic;
+  position: relative;
+}
+
+.testimonial-card .quote::before {
+  content: '“';
+  font-size: 4rem;
+  color: #f38d33;
+  opacity: 0.2;
+  position: absolute;
+  top: -20px;
+  left: -20px;
 }
 
 .author-info {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .author-img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #f38d33;
+  border: 3px solid #f38d33;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
 }
 
 .author-name {
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+}
+
+.author-title {
+  font-size: 0.9rem;
+  color: #f38d33;
+  font-weight: 500;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: #f38d33;
+  transform: scale(1.3);
 }
 
 .author-title {

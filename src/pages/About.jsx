@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import '../styles/About.css';
 import { Award, Clock, Star, Users, History, Target } from 'lucide-react';
@@ -7,6 +7,8 @@ import testimonialImg2 from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.
 import aboutHeroImg from '../assets/images/WhatsApp Image 2026-02-23 at 3.39.12 PM.jpeg'; // Reusing the home hero image
 
 const About = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const testimonials = [
     {
       quote: "Prime Corporate Stay exceeded all my expectations! The service was impeccable, and the environment was so welcoming. A truly unforgettable experience.",
@@ -24,6 +26,14 @@ const About = () => {
       title: "Vacationer"
     }
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 4000); // Change testimonial every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   return (
     <div className="page-container about-page">
@@ -92,19 +102,35 @@ const About = () => {
             <h2>What Our Guests Say</h2>
             <p>Hear from our satisfied customers</p>
           </div>
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
-                <p className="quote">"{testimonial.quote}"</p>
-                <div className="author-info">
-                  <img src={index % 2 === 0 ? testimonialImg1 : testimonialImg2} alt={testimonial.author} className="author-img" />
-                  <div>
-                    <p className="author-name">{testimonial.author}</p>
-                    <p className="author-title">{testimonial.title}</p>
+          <div className="testimonial-slider-container">
+            <div 
+              className="testimonial-slider" 
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="testimonial-slide">
+                  <div className="testimonial-card">
+                    <p className="quote">"{testimonial.quote}"</p>
+                    <div className="author-info">
+                      <img src={index % 2 === 0 ? testimonialImg1 : testimonialImg2} alt={testimonial.author} className="author-img" />
+                      <div className="author-details">
+                        <p className="author-name">{testimonial.author}</p>
+                        <p className="author-title">{testimonial.title}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="testimonial-dots">
+              {testimonials.map((_, index) => (
+                <span 
+                  key={index} 
+                  className={`dot ${index === currentIndex ? 'active' : ''}`}
+                  onClick={() => setCurrentIndex(index)}
+                ></span>
+              ))}
+            </div>
           </div>
         </section>
       </div>
